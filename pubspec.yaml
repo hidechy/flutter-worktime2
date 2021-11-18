@@ -1,0 +1,49 @@
+name: workingtime2
+description: A new Flutter application.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+  get:
+  http:
+  intl:
+  flutter_slidable:
+  fluttertoast: ^8.0.1-nullsafety.0
+  scrollable_positioned_list:
+  flutter_launcher_icons:
+  flutter_native_splash:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/image/
+
+flutter_native_splash:
+  image: "assets/image/ic_launcher.png"
+  color: "2e2e2e"
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/image/ic_launcher.png"
+
+adaptive_icon_background: "#ff0000"
+adaptive_icon_foreground: "assets/image/ic_launcher.png"
