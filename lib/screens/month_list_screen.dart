@@ -10,6 +10,7 @@ import 'dart:convert';
 import '../utility/utility.dart';
 
 import 'estimate_screen.dart';
+import 'list_screen.dart';
 import 'result_screen.dart';
 import 'worktime_input_screen.dart';
 
@@ -280,6 +281,20 @@ class _MonthListScreenState extends State<MonthListScreen> {
                                 color: Colors.green[900]!.withOpacity(0.5),
                               ),
                               child: const Text('result'),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          GestureDetector(
+                            onTap: () => _goListScreen(),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
+                              decoration: BoxDecoration(
+                                color: Colors.green[900]!.withOpacity(0.5),
+                              ),
+                              child: const Text('list'),
                             ),
                           ),
                           Expanded(
@@ -554,6 +569,16 @@ class _MonthListScreenState extends State<MonthListScreen> {
       context,
       MaterialPageRoute(
         builder: (context) => const ResultScreen(),
+      ),
+    );
+  }
+
+  ///
+  void _goListScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ListScreen(),
       ),
     );
   }
