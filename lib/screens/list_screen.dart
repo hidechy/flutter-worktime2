@@ -50,6 +50,9 @@ class ListScreen extends ConsumerWidget {
   Widget _listItem({required int position}) {
     final workTimeListState = _ref.watch(workTimeListProvider);
 
+    final workDayOnMonth =
+        getWorkDayOnMonth(data: workTimeListState[position].daily);
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 2),
       padding: const EdgeInsets.symmetric(
@@ -81,8 +84,18 @@ class ListScreen extends ConsumerWidget {
                     Text(workTimeListState[position].genba),
                     Row(
                       children: [
+                        Expanded(child: Text(workDayOnMonth.toString())),
                         Expanded(
-                          child: Text(workTimeListState[position].summary),
+                          child: Text(
+                            workTimeListState[position].summary,
+                            style: TextStyle(
+                              color: (double.parse(
+                                          workTimeListState[position].summary) >
+                                      180.0)
+                                  ? Colors.yellowAccent
+                                  : Colors.white,
+                            ),
+                          ),
                         ),
                         Expanded(
                           child: Container(
@@ -116,5 +129,21 @@ class ListScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  ///
+  int getWorkDayOnMonth({required String data}) {
+    var result = 0;
+
+    final exData = data.split('/');
+
+    for (var i = 0; i < exData.length; i++) {
+      var exOneData = exData[i].split('|');
+      if (exOneData[1] != '') {
+        result++;
+      }
+    }
+
+    return result;
   }
 }
