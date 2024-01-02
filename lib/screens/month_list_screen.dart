@@ -62,14 +62,11 @@ class _MonthListScreenState extends State<MonthListScreen> {
     _displayMonth = _utility.month;
     _displayDay = _utility.day;
 
-    _prevMonth =
-        DateTime(int.parse(_utility.year), int.parse(_utility.month) - 1, 1);
+    _prevMonth = DateTime(int.parse(_utility.year), int.parse(_utility.month) - 1, 1);
 
-    _nextMonth =
-        DateTime(int.parse(_utility.year), int.parse(_utility.month) + 1, 1);
+    _nextMonth = DateTime(int.parse(_utility.year), int.parse(_utility.month) + 1, 1);
 
-    _utility.makeMonthEnd(
-        int.parse(_displayYear), int.parse(_displayMonth) + 1, 0);
+    _utility.makeMonthEnd(int.parse(_displayYear), int.parse(_displayMonth) + 1, 0);
 
     _utility.makeYMDYData(_utility.monthEndDateTime, 0);
     monthEndDay = _utility.day;
@@ -79,8 +76,7 @@ class _MonthListScreenState extends State<MonthListScreen> {
     String url3 = "http://toyohide.work/BrainLog/api/getholiday";
     Map<String, String> headers3 = {'content-type': 'application/json'};
     String body3 = json.encode({"date": ''});
-    Response response3 =
-        await post(Uri.parse(url3), headers: headers3, body: body3);
+    Response response3 = await post(Uri.parse(url3), headers: headers3, body: body3);
 
     _holiday = jsonDecode(response3.body);
     //#############################
@@ -89,8 +85,7 @@ class _MonthListScreenState extends State<MonthListScreen> {
     String url2 = "http://toyohide.work/BrainLog/api/workinggenbaname";
     Map<String, String> headers2 = {'content-type': 'application/json'};
     String body2 = json.encode({"date": ''});
-    Response response2 =
-        await post(Uri.parse(url2), headers: headers2, body: body2);
+    Response response2 = await post(Uri.parse(url2), headers: headers2, body: body2);
 
     var data2 = jsonDecode(response2.body);
 
@@ -107,19 +102,13 @@ class _MonthListScreenState extends State<MonthListScreen> {
 
     String url = "http://toyohide.work/BrainLog/api/worktimemonthdata";
     Map<String, String> headers = {'content-type': 'application/json'};
-    String body = json
-        .encode({"date": '${_utility.year}-${_utility.month}-${_utility.day}'});
-    Response response =
-        await post(Uri.parse(url), headers: headers, body: body);
+    String body = json.encode({"date": '${_utility.year}-${_utility.month}-${_utility.day}'});
+    Response response = await post(Uri.parse(url), headers: headers, body: body);
 
     data = jsonDecode(response.body);
     ////////////////////////////////////////
     for (var i = 1; i <= int.parse(monthEndDay); i++) {
-      var date = _displayYear +
-          "-" +
-          _displayMonth.padLeft(2, '0') +
-          "-" +
-          i.toString().padLeft(2, '0');
+      var date = _displayYear + "-" + _displayMonth.padLeft(2, '0') + "-" + i.toString().padLeft(2, '0');
 
       Map _map = {};
       _map['date'] = date;
@@ -234,10 +223,7 @@ class _MonthListScreenState extends State<MonthListScreen> {
               Container(
                 decoration: BoxDecoration(
                   border: Border(
-                    bottom: BorderSide(
-                      color: Colors.yellowAccent.withOpacity(0.3),
-                      width: 10,
-                    ),
+                    bottom: BorderSide(color: Colors.yellowAccent.withOpacity(0.3), width: 10),
                   ),
                 ),
                 child: Column(
@@ -251,9 +237,7 @@ class _MonthListScreenState extends State<MonthListScreen> {
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             decoration: BoxDecoration(
                               border: Border(
-                                bottom: BorderSide(
-                                    color: Colors.white.withOpacity(0.3),
-                                    width: 3),
+                                bottom: BorderSide(color: Colors.white.withOpacity(0.3), width: 3),
                               ),
                             ),
                             child: Text('$_workDayNum'),
@@ -261,11 +245,8 @@ class _MonthListScreenState extends State<MonthListScreen> {
                           GestureDetector(
                             onTap: () => _goEstimateScreen(workday: _workday),
                             child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              decoration: BoxDecoration(
-                                color: Colors.green[900]!.withOpacity(0.5),
-                              ),
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                              decoration: BoxDecoration(color: Colors.green[900]!.withOpacity(0.5)),
                               child: const Text('estimate'),
                             ),
                           ),
@@ -275,25 +256,17 @@ class _MonthListScreenState extends State<MonthListScreen> {
                           GestureDetector(
                             onTap: () => _goResultScreen(),
                             child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              decoration: BoxDecoration(
-                                color: Colors.green[900]!.withOpacity(0.5),
-                              ),
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                              decoration: BoxDecoration(color: Colors.green[900]!.withOpacity(0.5)),
                               child: const Text('result'),
                             ),
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                          const SizedBox(width: 10),
                           GestureDetector(
                             onTap: () => _goListScreen(),
                             child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              decoration: BoxDecoration(
-                                color: Colors.green[900]!.withOpacity(0.5),
-                              ),
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                              decoration: BoxDecoration(color: Colors.green[900]!.withOpacity(0.5)),
                               child: const Text('list'),
                             ),
                           ),
@@ -302,9 +275,7 @@ class _MonthListScreenState extends State<MonthListScreen> {
                               alignment: Alignment.topRight,
                               decoration: BoxDecoration(
                                 border: Border(
-                                  bottom: BorderSide(
-                                      color: Colors.white.withOpacity(0.3),
-                                      width: 3),
+                                  bottom: BorderSide(color: Colors.white.withOpacity(0.3), width: 3),
                                 ),
                               ),
                               child: Text('$_monthWorkingTotal'),
@@ -312,8 +283,7 @@ class _MonthListScreenState extends State<MonthListScreen> {
                           ),
                           IconButton(
                             icon: const Icon(Icons.refresh),
-                            onPressed: () =>
-                                _goMonthListScreen(date: widget.date),
+                            onPressed: () => _goMonthListScreen(date: widget.date),
                             color: Colors.greenAccent,
                           ),
                         ],
@@ -322,32 +292,20 @@ class _MonthListScreenState extends State<MonthListScreen> {
                     Column(
                       children: <Widget>[
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 5),
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                           child: Row(
                             children: <Widget>[
-                              const SizedBox(
-                                width: 80,
-                                child: Text('Company : '),
-                              ),
-                              Expanded(
-                                child: Text(company),
-                              ),
+                              const SizedBox(width: 80, child: Text('Company : ')),
+                              Expanded(child: Text(company)),
                             ],
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 5),
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                           child: Row(
                             children: <Widget>[
-                              const SizedBox(
-                                width: 80,
-                                child: Text('Genba : '),
-                              ),
-                              Expanded(
-                                child: Text(genba),
-                              ),
+                              const SizedBox(width: 80, child: Text('Genba : ')),
+                              Expanded(child: Text(genba)),
                             ],
                           ),
                         ),
@@ -356,9 +314,7 @@ class _MonthListScreenState extends State<MonthListScreen> {
                   ],
                 ),
               ),
-              Expanded(
-                child: _monthList(),
-              ),
+              Expanded(child: _monthList()),
             ],
           ),
         ],
@@ -379,8 +335,6 @@ class _MonthListScreenState extends State<MonthListScreen> {
     _utility.makeYMDYData(_monthData[position]['date'], 0);
 
     return Slidable(
-      actionPane: const SlidableDrawerActionPane(),
-      actionExtentRatio: 0.15,
       child: Card(
         color: _utility.getBgColor(
           _monthData[position]['date'],
@@ -408,21 +362,17 @@ class _MonthListScreenState extends State<MonthListScreen> {
                             TableRow(children: [
                               Container(
                                 alignment: Alignment.topCenter,
-                                child: Text(
-                                    '${_monthData[position]['work_start']}'),
+                                child: Text('${_monthData[position]['work_start']}'),
                               ),
                               Container(
                                 alignment: Alignment.topCenter,
-                                child:
-                                    Text('${_monthData[position]['work_end']}'),
+                                child: Text('${_monthData[position]['work_end']}'),
                               ),
                               Container(
                                 alignment: Alignment.topRight,
                                 child: Text(
                                   '${_monthData[position]['minus']}',
-                                  style: TextStyle(
-                                      color:
-                                          Colors.yellowAccent.withOpacity(0.5)),
+                                  style: TextStyle(color: Colors.yellowAccent.withOpacity(0.5)),
                                 ),
                               ),
                               Container(
@@ -438,45 +388,51 @@ class _MonthListScreenState extends State<MonthListScreen> {
           ),
         ),
       ),
-
-      //actions: <Widget>[],
-      secondaryActions: <Widget>[
-        _getInputButton(position),
-      ],
+      endActionPane: ActionPane(motion: ScrollMotion(), children: _getInputButton(position)),
     );
   }
 
   ///
-  Widget _getInputButton(int position) {
+  List<Widget> _getInputButton(int position) {
+    List<Widget> list = [];
+
     var _disp = _getHolidayFlag(position: position);
 
     if (_disp == 1) {
-      return IconSlideAction(
-        color: _utility.getBgColor(
-          _monthData[position]['date'],
-          _monthData[position]['work_start'],
-          _monthData[position]['work_end'],
+      list.add(
+        SlidableAction(
+          onPressed: (value) {},
+          foregroundColor: Colors.black.withOpacity(0.1),
+          backgroundColor: _utility.getBgColor(
+            _monthData[position]['date'],
+            _monthData[position]['work_start'],
+            _monthData[position]['work_end'],
+          ),
+          icon: Icons.crop_square,
         ),
-        foregroundColor: Colors.black.withOpacity(0.1),
-        icon: Icons.crop_square,
       );
     } else {
-      return IconSlideAction(
-        color: _utility.getBgColor(
-          _monthData[position]['date'],
-          _monthData[position]['work_start'],
-          _monthData[position]['work_end'],
-        ),
-        foregroundColor: Colors.blueAccent,
-        icon: Icons.details,
-        onTap: () => _goWorktimeInputScreen(
-          context: context,
-          date: _monthData[position]['date'],
-          start: _monthData[position]['work_start'],
-          end: _monthData[position]['work_end'],
+      list.add(
+        SlidableAction(
+          onPressed: (value) {
+            _goWorktimeInputScreen(
+                context: context,
+                date: _monthData[position]['date'],
+                start: _monthData[position]['work_start'],
+                end: _monthData[position]['work_end']);
+          },
+          backgroundColor: _utility.getBgColor(
+            _monthData[position]['date'],
+            _monthData[position]['work_start'],
+            _monthData[position]['work_end'],
+          ),
+          foregroundColor: Colors.blueAccent,
+          icon: Icons.details,
         ),
       );
     }
+
+    return list;
   }
 
   ///
@@ -523,27 +479,16 @@ class _MonthListScreenState extends State<MonthListScreen> {
   void _goMonthListScreen({required String date}) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(
-        builder: (context) => MonthListScreen(date: date),
-      ),
+      MaterialPageRoute(builder: (context) => MonthListScreen(date: date)),
     );
   }
 
   ///
   void _goWorktimeInputScreen(
-      {required BuildContext context,
-      required String date,
-      required String start,
-      required String end}) async {
+      {required BuildContext context, required String date, required String start, required String end}) async {
     final result = await Navigator.push(
       context,
-      MaterialPageRoute<bool>(
-        builder: (context) => WorktimeInputScreen(
-          date: date,
-          start: start,
-          end: end,
-        ),
-      ),
+      MaterialPageRoute<bool>(builder: (context) => WorktimeInputScreen(date: date, start: start, end: end)),
     );
 
     if (result!) {
@@ -555,11 +500,7 @@ class _MonthListScreenState extends State<MonthListScreen> {
   void _goEstimateScreen({workday}) {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => EstimateScreen(
-          workday: workday,
-        ),
-      ),
+      MaterialPageRoute(builder: (context) => EstimateScreen(workday: workday)),
     );
   }
 
@@ -567,9 +508,7 @@ class _MonthListScreenState extends State<MonthListScreen> {
   void _goResultScreen() {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => const ResultScreen(),
-      ),
+      MaterialPageRoute(builder: (context) => const ResultScreen()),
     );
   }
 
@@ -577,9 +516,7 @@ class _MonthListScreenState extends State<MonthListScreen> {
   void _goListScreen() {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => ListScreen(),
-      ),
+      MaterialPageRoute(builder: (context) => ListScreen()),
     );
   }
 }
